@@ -16,7 +16,17 @@ class Request extends React.Component{
     makeRequest= ()=>{
         let url= this.state.url;
         let requestType= this.state.requestType;
-        this.print("Making request on: "+url);
+        let params= this.state.params;
+        let forms= this.state.forms;
+        let raws= this.state.raws;
+        let headers= this.state.headers;
+        this.print("Making Request");
+        this.print("URL: "+url);
+        this.print("Request Type: "+requestType);
+        this.print(params);
+        this.print(forms);
+        this.print(raws);
+        this.print(headers);
     }
 
     print= (msg)=>{
@@ -45,8 +55,9 @@ class Request extends React.Component{
                 params[index].key= value;
             }else{
                 params[index].value= value;
-            }            
-            this.setState({params: params});
+            } 
+            this.state.params= params;           
+            //this.setState({params: params});
         }else if(ptype==="form"){
             let params= this.state.forms;
             if(key){
@@ -54,7 +65,8 @@ class Request extends React.Component{
             }else{
                 params[index].value= value;
             }            
-            this.setState({forms: params});
+            this.state.forms= params;
+            // this.setState({forms: params});
         }else if(ptype==="raw"){
             let params= this.state.raws;
             if(key){
@@ -62,7 +74,8 @@ class Request extends React.Component{
             }else{
                 params[index].value= value;
             }            
-            this.setState({raws: params});
+            this.state.raws= params;
+            // this.setState({raws: params});
         }else if(ptype==="header"){
             let params= this.state.headers;
             if(key){
@@ -70,7 +83,8 @@ class Request extends React.Component{
             }else{
                 params[index].value= value;
             }            
-            this.setState({headers: params});
+            this.headers= params;
+            // this.setState({headers: params});
         }
     }
 
