@@ -49,15 +49,27 @@ class Request extends React.Component{
             this.setState({params: params});
         }else if(ptype==="form"){
             let params= this.state.forms;
-            params.push({"key": "", "value": ""});
+            if(key){
+                params[index].key= value;
+            }else{
+                params[index].value= value;
+            }            
             this.setState({forms: params});
         }else if(ptype==="raw"){
             let params= this.state.raws;
-            params.push({"key": "", "value": ""});
+            if(key){
+                params[index].key= value;
+            }else{
+                params[index].value= value;
+            }            
             this.setState({raws: params});
-        }else{
+        }else if(ptype==="header"){
             let params= this.state.headers;
-            params.push({"key": "", "value": ""});
+            if(key){
+                params[index].key= value;
+            }else{
+                params[index].value= value;
+            }            
             this.setState({headers: params});
         }
     }
@@ -66,41 +78,43 @@ class Request extends React.Component{
         return this.state.params.map((data, index)=>{
             return (
                 <div key={this.getKey()} className="paramRow">
-                    <input type="text" value={data.key} onChange={(eve)=>{this.handleChange("param", index, true, eve.target.value)}}/>
-                    <input type="text" value={data.value}/>
+                    {/* <input type="text" value={key} onChange={(eve)=>{this.handleChange("param", index, true, eve.target.value)}}/> */}
+                    {/* <input type="text" defaultValue={key} onBlur={(eve)=>console.log("VALUE: "+eve.target.value)} /> */}
+                    <input type="text" defaultValue={data.key} onBlur={(eve)=>{this.handleChange("param", index, true, eve.target.value)}} />
+                    <input type="text" defaultValue={data.value} onBlur={(eve)=>{this.handleChange("param", index, false, eve.target.value)}} />
                 </div>
             );
         });
     }
 
     getForms=()=>{
-        return this.state.forms.map(data=>{
+        return this.state.forms.map((data, index)=>{
             return (
                 <div key={this.getKey()} className="paramRow">
-                    <input type="text" value={data.key}/>
-                    <input type="text" value={data.value}/>
+                <input type="text" defaultValue={data.key} onBlur={(eve)=>{this.handleChange("form", index, true, eve.target.value)}} />
+                <input type="text" defaultValue={data.value} onBlur={(eve)=>{this.handleChange("form", index, false, eve.target.value)}} />
                 </div>
             );
         });
     }
 
     getRaws=()=>{
-        return this.state.raws.map(data=>{
+        return this.state.raws.map((data, index)=>{
             return (
                 <div key={this.getKey()} className="paramRow">
-                    <input type="text" value={data.key}/>
-                    <input type="text" value={data.value}/>
+                <input type="text" defaultValue={data.key} onBlur={(eve)=>{this.handleChange("raw", index, true, eve.target.value)}} />
+                <input type="text" defaultValue={data.value} onBlur={(eve)=>{this.handleChange("raw", index, false, eve.target.value)}} />
                 </div>
             );
         });
     }
 
     getHeaders=()=>{
-        return this.state.headers.map(data=>{
+        return this.state.headers.map((data, index)=>{
             return (
                 <div key={this.getKey()} className="paramRow">
-                    <input type="text" value={data.key}/>
-                    <input type="text" value={data.value}/>
+                <input type="text" defaultValue={data.key} onBlur={(eve)=>{this.handleChange("header", index, true, eve.target.value)}} />
+                <input type="text" defaultValue={data.value} onBlur={(eve)=>{this.handleChange("header", index, false, eve.target.value)}} />
                 </div>
             );
         });
