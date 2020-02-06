@@ -1,0 +1,13 @@
+.response-no{
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.response-no .no-response-label{
+    font-size: 1.2rem;
+    color: gray;
+    font-weight: bold;
+}

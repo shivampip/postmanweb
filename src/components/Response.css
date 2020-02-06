@@ -1,0 +1,27 @@
+.response{
+    width: 100%;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-top: 0;
+}
+
+.response .headerWrapper{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.response .headerWrapper .statusWrapper{
+    text-align: right;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.contentWrapper{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    min-height: 200px;
+}
