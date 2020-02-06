@@ -1,56 +1,57 @@
-.request{
-    width: 100%;
-    height: fit-content;
-    box-sizing: border-box;
-    padding: 10px;
+.request {
+	width: 100%;
+	height: fit-content;
+	box-sizing: border-box;
+	padding: 10px;
+	/* border: 1px solid black; */
 }
 
-.headerWrapper{
-    display: grid;
-    grid-template-columns: auto 1fr auto;
+.headerWrapper {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
 }
 
-.headerWrapper select{
-    padding: 10px 20px;
-    border: 1px solid black;
+.headerWrapper select {
+	padding: 10px 20px;
+	border: 1px solid black;
 }
 
-.headerWrapper input{
-    padding: 10px 20px;
-    border: 1px solid black;
+.headerWrapper input {
+	padding: 10px 20px;
+	border: 1px solid black;
 }
 
-.headerWrapper button{
-    padding: 10px 20px;
-    border: 1px solid black;
-    outline: none;
+.headerWrapper button {
+	padding: 10px 20px;
+	border: 1px solid black;
+	outline: none;
 }
 
-.payloadWrapper{
-    display: grid;
-    grid-template-columns: 1fr 6fr;
-    margin-top: 10px;
+.payloadWrapper {
+	display: grid;
+	grid-template-columns: 1fr 6fr;
+	margin-top: 10px;
 }
 
-.tabWrapper{
+.tabWrapper {
 }
 
-.tabWrapper button{
-    border: 1px solid black;
-    width: 100%;
-    padding: 10px 20px;
+.tabWrapper button {
+	border: 1px solid black;
+	width: 100%;
+	padding: 10px 20px;
 }
 
-.paramsWrapper{
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
+.paramsWrapper {
+	background-color: rgb(255, 255, 255);
+	border: 1px solid black;
 }
 
-.paramRow{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.paramRow {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
-.paramRow input{
-    padding: 10px;
+.paramRow input {
+	padding: 10px;
 }
