@@ -118,11 +118,18 @@ class Request extends React.Component {
 
 	getParams = () => {
 		return this.state.params.map((data, index) => {
+			let lbtn= "";
+			let rbtn= "";
+			if(index===0){
+				lbtn= "topLeftBtn";
+				rbtn= "topRightBtn";
+			}
 			return (
 				<div key={this.getKey()} className="paramRow">
 					{/* <input type="text" value={key} onChange={(eve)=>{this.handleChange("param", index, true, eve.target.value)}}/> */}
 					{/* <input type="text" defaultValue={key} onBlur={(eve)=>console.log("VALUE: "+eve.target.value)} /> */}
 					<input
+						className={lbtn}
 						type="text"
 						defaultValue={data.key}
 						onBlur={eve => {
@@ -130,6 +137,7 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
+						className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
@@ -143,9 +151,16 @@ class Request extends React.Component {
 
 	getForms = () => {
 		return this.state.forms.map((data, index) => {
+			let lbtn= "";
+			let rbtn= "";
+			if(index===0){
+				lbtn= "topLeftBtn";
+				rbtn= "topRightBtn";
+			}
 			return (
 				<div key={this.getKey()} className="paramRow">
 					<input
+						className={lbtn}
 						type="text"
 						defaultValue={data.key}
 						onBlur={eve => {
@@ -153,6 +168,7 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
+						className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
@@ -166,9 +182,16 @@ class Request extends React.Component {
 
 	getRaws = () => {
 		return this.state.raws.map((data, index) => {
+			let lbtn= "";
+			let rbtn= "";
+			if(index===0){
+				lbtn= "topLeftBtn";
+				rbtn= "topRightBtn";
+			}
 			return (
 				<div key={this.getKey()} className="paramRow">
 					<input
+						className={lbtn}
 						type="text"
 						defaultValue={data.key}
 						onBlur={eve => {
@@ -176,6 +199,7 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
+						className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
@@ -189,9 +213,16 @@ class Request extends React.Component {
 
 	getHeaders = () => {
 		return this.state.headers.map((data, index) => {
+			let lbtn= "";
+			let rbtn= "";
+			if(index===0){
+				lbtn= "topLeftBtn";
+				rbtn= "topRightBtn";
+			}
 			return (
 				<div key={this.getKey()} className="paramRow">
 					<input
+						className={lbtn}
 						type="text"
 						defaultValue={data.key}
 						onBlur={eve => {
@@ -199,6 +230,7 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
+						className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
@@ -262,6 +294,7 @@ class Request extends React.Component {
 				<div className="payloadWrapper">
 					<div className="tabWrapper">
 						<button
+							className="topBtn"
 							onClick={() => {
 								this.setState({ patamTab: "param" });
 							}}
@@ -283,6 +316,7 @@ class Request extends React.Component {
 							Raw Data
 						</button>
 						<button
+							className="bottomBtn"
 							onClick={() => {
 								this.setState({ patamTab: "header" });
 							}}
@@ -292,7 +326,7 @@ class Request extends React.Component {
 					</div>
 					<div className="paramsWrapper">
 						{this.renderParams()}
-						<button onClick={this.addNewRow}>New</button>
+						<button className="newParaBtn" onClick={this.addNewRow}>New</button>
 					</div>
 				</div>
 			</div>

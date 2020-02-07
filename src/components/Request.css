@@ -3,7 +3,10 @@
 	height: fit-content;
 	box-sizing: border-box;
 	padding: 10px;
-	/* border: 1px solid black; */
+	box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+	border-radius: 10px;
+	/* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
+  	transition: 0.3s;
 }
 
 .headerWrapper {
@@ -12,8 +15,9 @@
 }
 
 .headerWrapper select {
-	padding: 10px 20px;
+	padding: 10px 15px;
 	border: 1px solid black;
+	border-radius: 10px 0 0 10px;
 }
 
 .headerWrapper input {
@@ -21,10 +25,11 @@
 	border: 1px solid black;
 }
 
-.headerWrapper button {
+.headerWrapper> button {
 	padding: 10px 20px;
-	border: 1px solid black;
 	outline: none;
+	border-radius: 0 10px 10px 0;
+	border: 1px solid black;
 }
 
 .payloadWrapper {
@@ -34,24 +39,62 @@
 }
 
 .tabWrapper {
+	border-radius: 10px;
 }
 
 .tabWrapper button {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	width: 100%;
-	padding: 10px 20px;
+	padding: 11px 20px;
+	outline: none;
+	border: 1px solid black;
 }
 
+.tabWrapper .bottomBtn{
+	border-radius: 0 0 10px 10px;
+}
+
+.tabWrapper .topBtn{
+	border-radius: 10px 10px 0 0;
+}
+
+
 .paramsWrapper {
+	margin-left: 10px;
 	background-color: rgb(255, 255, 255);
+	/* border: 1px solid black; */
+	border-radius: 10px;
+}
+
+.paramsWrapper .newParaBtn{
+	padding: 11px;
+	width: 100%;
+	outline: none;
+	border-radius: 0 0 10px 10px;
 	border: 1px solid black;
+}
+
+.paramsWrapper> div{
+	border-radius: 10px;
+}
+
+.topLeftBtn{
+	border-top-left-radius: 10px;
+}
+
+.topRightBtn{
+	border-top-right-radius: 10px;
 }
 
 .paramRow {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	outline: none;
+	box-sizing: border-box;
 }
 
 .paramRow input {
 	padding: 10px;
+	outline: none;
+	border: 1px soid black;
 }

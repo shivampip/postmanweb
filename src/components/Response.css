@@ -3,8 +3,9 @@
 	height: fit-content;
 	box-sizing: border-box;
 	padding: 10px;
-	padding-top: 0;
-	/* border: 1px solid black; */
+	box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+	border-radius: 15px;
+	margin-top: 10px;
 }
 
 .response .headerWrapper {
@@ -12,12 +13,28 @@
 	grid-template-columns: auto 1fr;
 }
 
-.response .headerWrapper .statusWrapper {
+.response .headerWrapper .viewBtnWrapper{
+	border-top-left-radius: 10px;
+}
+
+.response .headerWrapper .viewBtnWrapper button{
+	padding: 10px 15px;
 	border: 1px solid black;
+	outline: none;
+}
+
+.response .headerWrapper .viewBtnWrapper button:first-child{
+	border-top-left-radius: 10px;
+}
+
+.response .headerWrapper .statusWrapper {
+	/* border: 1px solid black; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: right;
+	border: 1px solid black;
+	border-top-right-radius: 10px;
 }
 
 .response .headerWrapper .statusWrapper div {
@@ -32,5 +49,6 @@
 	padding: 10px;
 	box-sizing: border-box;
 	border: 1px solid black;
+	border-radius: 0 0 10px 10px;
 	min-height: 200px;
 }
