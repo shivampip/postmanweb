@@ -32,7 +32,7 @@ class ResponseJSON extends React.Component {
 				{/* <Rjv data={JSON.parse(this.props.response)} /> */}
 				{/* <JSONTree data={JSON.parse(this.props.response)} /> */}
 				<JSONTree
-					data={JSON.parse(this.props.response)}
+					data={JSON.parse(this.props.response).data}
 					theme={theme}
 					invertTheme={true}
 					shouldExpandNode={(keyName, data, level) => {

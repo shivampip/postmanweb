@@ -3,6 +3,9 @@ import React from "react";
 
 import ResponseNo from "./ResponseNo";
 import RespnoseJSON from "./ResponseJSON";
+import ResponsePretty from "./ResponsePretty";
+import ResponseRaw from "./ResponseRaw";
+import ResponseHTML from "./ResponseHTML";
 
 class Response extends React.Component {
 	state = {
@@ -21,11 +24,53 @@ class Response extends React.Component {
 		}
 	};
 
+	
+
+	whatIsIt=(object)=> {
+		var stringConstructor = "test".constructor;
+		var arrayConstructor = [].constructor;
+		var objectConstructor = ({}).constructor;
+	    if (object === null) {
+	        return "null";
+	    }
+	    if (object === undefined) {
+	        return "undefined";
+	    }
+	    if (object.constructor === stringConstructor) {
+	        return "String";
+	    }
+	    if (object.constructor === arrayConstructor) {
+	        return "Array";
+		}
+	    if (object.constructor === objectConstructor) {
+	        return "Object";
+	    }
+	    {
+	        return "NA";
+	    }
+	}
+
+	isHTML=(str)=>{
+		return /<\/?[a-z][\s\S]*>/i.test(str)
+	}
+
 	renderResponse = () => {
 		if (this.state.response === -1) {
 			return <ResponseNo />;
 		} else {
-			return <RespnoseJSON response={this.state.response} />;
+			let response= JSON.parse(this.state.response);
+			if(this.whatIsIt(response.data)==="Object"){
+				console.log("Rendering response as Object");
+				return <ResponsePretty response={JSON.stringify(response.data)}/>;
+			}else if(this.whatIsIt(response.data)==="String"){
+				if(this.isHTML(response.data)){
+					console.log("Rendering response as HTML");
+					return <ResponseHTML response={response.data}/>
+				}else{
+					console.log("Rendering response as String");
+					return <ResponseRaw response={response.data}/>
+				}
+			}
 		}
 	};
 	render() {
@@ -35,8 +80,9 @@ class Response extends React.Component {
 				<div className="headerWrapper">
 					<div className="viewBtnWrapper">
 						<button>Pretty</button>
+						<button>JSON</button>
+						<button>HTML</button>
 						<button>Raw</button>
-						<button>Render HTML</button>
 					</div>
 					<div className="statusWrapper">
 						<div>{this.state.statusCode}</div>

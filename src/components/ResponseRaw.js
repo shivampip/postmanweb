@@ -5,7 +5,7 @@ class ResponseRaw extends React.Component {
 	render() {
 		return (
 			<div className="response-json">
-				<pre>{JSON.stringify(JSON.parse(this.props.response), null, 2)}</pre>
+				<pre>{this.props.response}</pre>
 			</div>
 		);
 	}

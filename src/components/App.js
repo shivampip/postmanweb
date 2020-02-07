@@ -12,9 +12,11 @@ class App extends React.Component {
 	makeRequest = (url, requestType, params, raws, forms, headers) => {
 		// console.clear();
 		console.log("SENDING REQUEST");
+		const proxyurl = "https://cors-anywhere.herokuapp.com/";
 		axios({
 			method: requestType,
-			url: url,
+			// url: url,
+			url: proxyurl+url,
 			params: params,
 			// data: JSON.stringify({
 			// 	title: "Shivam",
