@@ -16,7 +16,7 @@ class App extends React.Component {
 		axios({
 			method: requestType,
 			// url: url,
-			url: proxyurl+url,
+			url: proxyurl + url,
 			params: params,
 			// data: JSON.stringify({
 			// 	title: "Shivam",
