@@ -36,6 +36,8 @@ class Response extends React.Component {
 			console.log(response.status);
 			this.state.statusCode = response.status;
 			this.state.oresponse = JSON.stringify(response);
+		}else{
+			this.state.statusCode= 0
 		}
 	};
 

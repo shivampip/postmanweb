@@ -24,6 +24,10 @@
 	outline: none;
 }
 
+.response .headerWrapper .viewBtnWrapper button:hover{
+	cursor: pointer;
+}
+
 .response .headerWrapper .viewBtnWrapper button:first-child{
 	border-top-left-radius: 10px;
 }

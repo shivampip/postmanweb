@@ -33,6 +33,10 @@
 	border: 1px solid black;
 }
 
+.headerWrapper> button:hover {
+	cursor: pointer;
+}
+
 .payloadWrapper {
 	display: grid;
 	grid-template-columns: 1fr 6fr;
@@ -49,6 +53,10 @@
 	padding: 11px 20px;
 	outline: none;
 	border: 1px solid black;
+}
+
+.tabWrapper button:hover {
+	cursor: pointer;
 }
 
 .tabWrapper .bottomBtn{
@@ -77,6 +85,10 @@
 	border: 1px solid black;
 	position: absolute;
 	bottom: 0;
+}
+
+.paramsWrapper .newParaBtn:hover{
+	cursor: pointer;
 }
 
 .paramsWrapper> div{
@@ -116,4 +128,8 @@
 	/* width: 40px; */
 	border: 1px solid black;
 	outline: none;
+}
+
+.paramRow .removeRowB:hover{
+	cursor: pointer;
 }

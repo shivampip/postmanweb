@@ -6,12 +6,14 @@ import axios from "axios";
 
 class App extends React.Component {
 	state = {
-		response: -1
+		response: -1,
+		proWClass: "requestOverlay"
 	};
 
 	makeRequest = (url, requestType, params, raws, forms, headers) => {
 		// console.clear();
 		console.log("SENDING REQUEST");
+		this.setState({proWClass: "requestOverlayActive"});
 		const proxyurl = "https://cors-anywhere.herokuapp.com/";
 		axios({
 			method: requestType, 
@@ -37,15 +39,21 @@ class App extends React.Component {
 					this.setState({response: errRes});
 				}
 			})
-			.then(function() {
+			.then(()=> {
 				console.log("REQUEST COMPLETED");
+				this.setState({proWClass: "requestOverlay"});
 			});
 	};
 
 	render() {
 		return (
 			<div className="app">
-				<Request onSend={this.makeRequest} />
+				<div className="requestWrapper">
+					<div className={this.state.proWClass}>
+						<p>Sending Request...</p>
+					</div>
+					<Request onSend={this.makeRequest} />
+				</div>
 				<Response response={this.state.response} />
 			</div>
 		);

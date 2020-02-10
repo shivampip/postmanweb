@@ -30,3 +30,51 @@ body {
 	position:relative;
 	top:1px;
 }
+
+
+
+.requestWrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.requestOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.616);
+	transition: background-color 0.5s;
+	z-index: 11;
+	border-radius: 10px;
+	display: flex;
+  	justify-content: center;
+	align-items: center; 
+	transition: 1s;
+	display: none;
+}
+
+.requestOverlayActive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.616);
+	transition: background-color 0.5s;
+	z-index: 11;
+	border-radius: 10px;
+	display: flex;
+  	justify-content: center;
+	align-items: center; 
+	transition: 11s;
+	transition-duration: 11s;
+}
+
+
+.requestOverlayActive p{
+	color: white;
+	text-align: center;
+	font-size: 1.2rem;
+}
