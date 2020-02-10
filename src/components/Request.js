@@ -18,7 +18,7 @@ class Request extends React.Component {
 			{ key: "fname", value: "r1" },
 			{ key: "lname", value: "r2" }
 		],
-		rawData: "This is raw data",
+		rawData: "",
 		headers: [{ key: "Authorization", value: "KEY 3434634523" }]
 	};
 
@@ -234,6 +234,7 @@ class Request extends React.Component {
 	getRaws = () => {
 		return <div className="rawData">
 			<textarea
+				placeholder="Enter raw data here"
 				onBlur={(eve)=>{this.state.rawData= eve.target.value}}
 			>{this.state.rawData}</textarea>
 		</div>;
