@@ -32,38 +32,44 @@ class Request extends React.Component {
 		this.print("Request Type: " + requestType);
 
 		let params = {};
-		this.state.params.filter((param)=>{
-			if(param.key===""){
-				return false;
-			}
-			return true;
-		  }).map(param => {
-			params[param.key] = param.value;
-		});
+		this.state.params
+			.filter(param => {
+				if (param.key === "") {
+					return false;
+				}
+				return true;
+			})
+			.map(param => {
+				params[param.key] = param.value;
+			});
 
 		let raws = this.state.raws;
 
 		let forms = {};
-		this.state.forms.filter((form)=>{
-			if(form.key===""){
-				return false;
-			}
-			return true;
-		  }).map(form => {
-			forms[form.key] = form.value;
-		});
+		this.state.forms
+			.filter(form => {
+				if (form.key === "") {
+					return false;
+				}
+				return true;
+			})
+			.map(form => {
+				forms[form.key] = form.value;
+			});
 
 		let headers = {};
-		this.state.headers.filter((header)=>{
-			if(header.key===""){
-				return false;
-			}
-			return true;
-		  }).map(header => {
-			headers[header.key] = header.value;
-		});
+		this.state.headers
+			.filter(header => {
+				if (header.key === "") {
+					return false;
+				}
+				return true;
+			})
+			.map(header => {
+				headers[header.key] = header.value;
+			});
 
-		let rawData= this.state.rawData;
+		let rawData = this.state.rawData;
 		this.print("PARAMS");
 		this.print(params);
 		this.print("RAWS");
@@ -135,33 +141,33 @@ class Request extends React.Component {
 	};
 
 	removeRow = (ptype, index) => {
-		console.log("Removing Row: "+ptype+" , "+index);
+		console.log("Removing Row: " + ptype + " , " + index);
 		if (ptype === "param") {
 			let params = this.state.params;
 			params.splice(index, 1);
-			this.setState({params: params});
+			this.setState({ params: params });
 		} else if (ptype === "form") {
 			let params = this.state.forms;
 			params.splice(index, 1);
-			this.setState({forms: params});
+			this.setState({ forms: params });
 		} else if (ptype === "raw") {
 			let params = this.state.raws;
 			params.splice(index, 1);
-			this.setState({raws: params});
+			this.setState({ raws: params });
 		} else if (ptype === "header") {
 			let params = this.state.headers;
 			params.splice(index, 1);
-			this.setState({headers: params});
+			this.setState({ headers: params });
 		}
 	};
 
 	getParams = () => {
 		return this.state.params.map((data, index) => {
-			let lbtn= "";
-			let rbtn= "";
-			if(index===0){
-				lbtn= "topLeftBtn";
-				rbtn= "topRightBtn";
+			let lbtn = "";
+			let rbtn = "";
+			if (index === 0) {
+				lbtn = "topLeftBtn";
+				rbtn = "topRightBtn";
 			}
 			return (
 				<div key={this.getKey()} className="paramRow">
@@ -170,6 +176,7 @@ class Request extends React.Component {
 					<input
 						className={lbtn}
 						type="text"
+						placeholder="Key"
 						defaultValue={data.key}
 						onBlur={eve => {
 							this.handleChange("param", index, true, eve.target.value);
@@ -179,16 +186,19 @@ class Request extends React.Component {
 						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
+						placeholder="Value"
 						onBlur={eve => {
 							this.handleChange("param", index, false, eve.target.value);
 						}}
 					/>
-					<button 
-						className= {`removeRowB ${rbtn}`}
+					<button
+						className={`removeRowB ${rbtn}`}
 						onClick={eve => {
 							this.removeRow("param", index);
 						}}
-					>X</button>
+					>
+						X
+					</button>
 				</div>
 			);
 		});
@@ -196,11 +206,11 @@ class Request extends React.Component {
 
 	getForms = () => {
 		return this.state.forms.map((data, index) => {
-			let lbtn= "";
-			let rbtn= "";
-			if(index===0){
-				lbtn= "topLeftBtn";
-				rbtn= "topRightBtn";
+			let lbtn = "";
+			let rbtn = "";
+			if (index === 0) {
+				lbtn = "topLeftBtn";
+				rbtn = "topRightBtn";
 			}
 			return (
 				<div key={this.getKey()} className="paramRow">
@@ -208,6 +218,7 @@ class Request extends React.Component {
 						className={lbtn}
 						type="text"
 						defaultValue={data.key}
+						placeholder="Key"
 						onBlur={eve => {
 							this.handleChange("form", index, true, eve.target.value);
 						}}
@@ -216,71 +227,46 @@ class Request extends React.Component {
 						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
+						placeholder="Value"
 						onBlur={eve => {
 							this.handleChange("form", index, false, eve.target.value);
 						}}
 					/>
-					<button 
-						className= {`removeRowB ${rbtn}`}
+					<button
+						className={`removeRowB ${rbtn}`}
 						onClick={eve => {
 							this.removeRow("form", index);
 						}}
-					>X</button>
+					>
+						X
+					</button>
 				</div>
 			);
 		});
 	};
 
 	getRaws = () => {
-		return <div className="rawData">
-			<textarea
-				placeholder="Enter raw data here"
-				onBlur={(eve)=>{this.state.rawData= eve.target.value}}
-			>{this.state.rawData}</textarea>
-		</div>;
-		return this.state.raws.map((data, index) => {
-			let lbtn= "";
-			let rbtn= "";
-			if(index===0){
-				lbtn= "topLeftBtn";
-				rbtn= "topRightBtn";
-			}
-			return (
-				<div key={this.getKey()} className="paramRow">
-					<input
-						className={lbtn}
-						type="text"
-						defaultValue={data.key}
-						onBlur={eve => {
-							this.handleChange("raw", index, true, eve.target.value);
-						}}
-					/>
-					<input
-						// className={rbtn}
-						type="text"
-						defaultValue={data.value}
-						onBlur={eve => {
-							this.handleChange("raw", index, false, eve.target.value);
-						}}
-					/>
-					<button 
-						className= {`removeRowB ${rbtn}`}
-						onClick={eve => {
-							this.removeRow("raw", index);
-						}}
-					>X</button>
-				</div>
-			);
-		});
+		return (
+			<div className="rawData">
+				<textarea
+					placeholder="Enter raw data here"
+					onBlur={eve => {
+						this.state.rawData = eve.target.value;
+					}}
+				>
+					{this.state.rawData}
+				</textarea>
+			</div>
+		);
 	};
 
 	getHeaders = () => {
 		return this.state.headers.map((data, index) => {
-			let lbtn= "";
-			let rbtn= "";
-			if(index===0){
-				lbtn= "topLeftBtn";
-				rbtn= "topRightBtn";
+			let lbtn = "";
+			let rbtn = "";
+			if (index === 0) {
+				lbtn = "topLeftBtn";
+				rbtn = "topRightBtn";
 			}
 			return (
 				<div key={this.getKey()} className="paramRow">
@@ -288,6 +274,7 @@ class Request extends React.Component {
 						className={lbtn}
 						type="text"
 						defaultValue={data.key}
+						placeholder="Key"
 						onBlur={eve => {
 							this.handleChange("header", index, true, eve.target.value);
 						}}
@@ -296,16 +283,19 @@ class Request extends React.Component {
 						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
+						placeholder="Value"
 						onBlur={eve => {
 							this.handleChange("header", index, false, eve.target.value);
 						}}
 					/>
-					<button 
-						className= {`removeRowB ${rbtn}`}
+					<button
+						className={`removeRowB ${rbtn}`}
 						onClick={eve => {
 							this.removeRow("header", index);
 						}}
-					>X</button>
+					>
+						X
+					</button>
 				</div>
 			);
 		});
@@ -342,8 +332,6 @@ class Request extends React.Component {
 			this.setState({ headers: params });
 		}
 	};
-
-
 
 	render() {
 		return (
@@ -397,7 +385,9 @@ class Request extends React.Component {
 					</div>
 					<div className="paramsWrapper">
 						{this.renderParams()}
-						<button className="newParaBtn" onClick={this.addNewRow}>New</button>
+						<button className="newParaBtn" onClick={this.addNewRow}>
+							New
+						</button>
 					</div>
 				</div>
 			</div>

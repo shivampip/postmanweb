@@ -1,5 +1,9 @@
 body {
 	font-family: Verdana, Geneva, sans-serif;
+	background: #f5f5f5;
+}
+*:focus {
+	outline: none;
 }
 .app {
 	width: 80%;
@@ -7,73 +11,70 @@ body {
 }
 
 .btn {
-	box-shadow:inset 0px 1px 0px 0px #cf866c;
-	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
-	background-color:#d0451b;
-	border-radius:3px;
-	border:1px solid #942911;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #854629;
+	box-shadow: inset 0px 1px 0px 0px #cf866c;
+	background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+	background-color: #d0451b;
+	border-radius: 3px;
+	border: 1px solid #942911;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-family: Arial;
+	font-size: 13px;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #854629;
 }
 .btn:hover {
-	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
-	background-color:#bc3315;
+	background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+	background-color: #bc3315;
 }
 
 .btn:active {
-	position:relative;
-	top:1px;
+	position: relative;
+	top: 1px;
 }
 
-
-
 .requestWrapper {
-    display: inline-block;
-    position: relative;
+	display: inline-block;
+	position: relative;
 }
 
 .requestOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.616);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.616);
 	transition: background-color 0.5s;
 	z-index: 11;
 	border-radius: 10px;
 	display: flex;
-  	justify-content: center;
-	align-items: center; 
+	justify-content: center;
+	align-items: center;
 	transition: 1s;
 	display: none;
 }
 
 .requestOverlayActive {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.616);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.616);
 	transition: background-color 0.5s;
 	z-index: 11;
 	border-radius: 10px;
 	display: flex;
-  	justify-content: center;
-	align-items: center; 
+	justify-content: center;
+	align-items: center;
 	transition: 11s;
 	transition-duration: 11s;
 }
 
-
-.requestOverlayActive p{
+.requestOverlayActive p {
 	color: white;
 	text-align: center;
 	font-size: 1.2rem;
