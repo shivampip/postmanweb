@@ -11,24 +11,36 @@ class Response extends React.Component {
 	state = {
 		statusCode: -1,
 		response: -1,
-		resType: -1
+		resType: -1,
+		rresponse: -1
 	};
 
-	static getDerivedStateFromProps(props, current_state) {
-		if (current_state.response !== props.response) {
-			return {
-				resType: "auto",
-				response: props.response
-			};
+	// static getDerivedStateFromProps(props, current_state) {
+	// 	if (current_state.rresponse !== props.response) {
+	// 		console.log("Received Props.....");
+	// 		return {
+	// 			resType: "auto",
+	// 			response: props.response,
+	// 			rresponse: props.responsesss
+	// 		};
+	// 	}
+	// 	return null;
+	// }
+
+	componentWillUpdate(prevProps) {
+		if (prevProps.response !== this.props.response) {
+			console.log("PPRROOPPP UpdateD");
+			this.state.resType="auto";
+			this.state.response= this.props.response
+			//this.render();
 		}
-		return null;
-	}
+	  }
 
 	updateState = () => {
 		console.log("Updating State");
 		if (this.props.response !== -1) {
 			let response = JSON.parse(this.props.response);
-			console.log("Here is the status");
+			console.log("Here is the status: "+this.state.resType);
 			console.log(response.status);
 			this.state.statusCode = response.status;
 			this.state.response = JSON.stringify(response);
@@ -67,60 +79,69 @@ class Response extends React.Component {
 		console.log("Steeing request type: " + type);
 		if (type === "auto") {
 			if (this.state.response === -1) {
-				this.resType = "no";
+				this.state.resType = "no";
 				// return <ResponseNo />;
 			} else {
 				let response = JSON.parse(this.state.response);
 				if (this.whatIsIt(response.data) === "Object") {
 					console.log("Rendering response as Object");
-					this.resType = "pretty";
-					this.response = JSON.stringify(response.data);
+					this.state.resType = "pretty";
+					this.state.response = JSON.stringify(response.data);
 					// return <ResponsePretty response={JSON.stringify(response.data)} />;
 				} else if (this.whatIsIt(response.data) === "String") {
 					if (this.isHTML(response.data)) {
 						console.log("Rendering response as HTML");
-						this.resType = "html";
-						this.response = response.data;
+						this.state.resType = "html";
+						this.state.response = response.data;
 						// return <ResponseHTML response={response.data} />;
 					} else {
 						console.log("Rendering response as String");
-						this.resType = "raw";
-						this.response = response.data;
+						this.state.resType = "raw";
+						this.state.response = response.data;
 						// return <ResponseRaw response={response.data} />;
 					}
 				}
 			}
 		} else {
 			if (type === -1) {
-				this.resType = "no";
+				this.state.resType = "no";
 			} else {
-				this.resType = type;
-				this.render();
+				// this.state.resType = type;
+				this.setState({resType: type});
+				//this.render();
 			}
 		}
 	};
 	renderResponse = () => {
-		console.log("RENDERING as " + this.state.resType);
 		if (this.state.resType === "no") {
+			console.log("RENDERING as " + this.state.resType);
 			return <ResponseNo />;
 		} else if (this.state.resType === "raw") {
-			return <ResponseRaw response={this.status.response} />;
+			console.log("RENDERING as " + this.state.resType);
+			return <ResponseRaw response={this.state.response} />;
 		} else if (this.state.resType === "pretty") {
+			console.log("RENDERING as " + this.state.resType);
 			return <ResponsePretty response={this.state.response} />;
 		} else if (this.state.resType === "html") {
+			console.log("RENDERING as " + this.state.resType);
 			return <ResponseHTML response={this.state.response} />;
 		} else if (this.state.resType === "json") {
+			console.log("RENDERING as " + this.state.resType);
 			return <RespnoseJSON response={this.state.response} />;
 		}
+		console.log("RENDERING as " + this.state.resType);
 		return <ResponseNo />;
 	};
 	render() {
-		console.log("Rendering response");
+		console.log("Rendering response: "+this.state.resType);
+
 		this.updateState();
-		if (this.state.resType === "auto") {
+		if(this.state.resType==="auto"){
 			this.setRespnoseType("auto");
-			console.log("Now resType: " + this.state.resType);
 		}
+		console.log("BEFORE RENDERNING")
+		console.log(this.state.resType);
+		//console.log(this.state.response);
 		return (
 			<div className="response">
 				<div className="headerWrapper">
