@@ -14,29 +14,21 @@ class App extends React.Component {
 		console.log("SENDING REQUEST");
 		const proxyurl = "https://cors-anywhere.herokuapp.com/";
 		axios({
-			method: requestType,
+			method: requestType, 
 			url: url,
 			// url: proxyurl + url,
 			params: params,
-			// data: JSON.stringify({
-			// 	title: "Shivam",
-			// 	body: "Wow, It's working",
-			// 	userId: 11
-			// }),
-			data: forms,
+			data: (raws!=="")? raws: forms,
 			headers: headers
 		})
 			.then(response => {
-				console.log("SUCCESS");
-				console.log("RESPONSE");
+				console.log("RESONSE SUCCESS");
 				console.log(response);
 				this.setState({ response: JSON.stringify(response) });
 			})
 			.catch(err => {
-				console.log("ERROR");
-				console.log("RESPONSE");
+				console.log("RESONSE ERROR");
 				console.log(err);
-				console.log("Error logged");
 				if (err.response) {
 					this.setState({ response: JSON.stringify(err.response) });
 				}else{

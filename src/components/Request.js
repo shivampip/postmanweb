@@ -18,6 +18,7 @@ class Request extends React.Component {
 			{ key: "fname", value: "r1" },
 			{ key: "lname", value: "r2" }
 		],
+		rawData: "This is raw data",
 		headers: [{ key: "Authorization", value: "KEY 3434634523" }]
 	};
 
@@ -61,15 +62,17 @@ class Request extends React.Component {
 		  }).map(header => {
 			headers[header.key] = header.value;
 		});
+
+		let rawData= this.state.rawData;
 		this.print("PARAMS");
 		this.print(params);
 		this.print("RAWS");
-		this.print(raws);
+		this.print(rawData);
 		this.print("FORM DATA");
 		this.print(forms);
 		this.print("HEADERS");
 		this.print(headers);
-		this.props.onSend(url, requestType, params, raws, forms, headers);
+		this.props.onSend(url, requestType, params, rawData, forms, headers);
 	};
 
 	print = msg => {
@@ -229,6 +232,11 @@ class Request extends React.Component {
 	};
 
 	getRaws = () => {
+		return <div className="rawData">
+			<textarea
+				onBlur={(eve)=>{this.state.rawData= eve.target.value}}
+			>{this.state.rawData}</textarea>
+		</div>;
 		return this.state.raws.map((data, index) => {
 			let lbtn= "";
 			let rbtn= "";

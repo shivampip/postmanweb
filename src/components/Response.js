@@ -13,7 +13,9 @@ class Response extends React.Component {
 		response: -1,
 		resType: -1,
 		oresType: -1,
-		oresponse: -1
+		oresponse: -1,
+		showFormatBtns: true,
+		showErrorBtn: false
 	};
 
 	componentWillUpdate(prevProps) {
@@ -66,6 +68,8 @@ class Response extends React.Component {
 	};
 
 	setRespnoseType = (type = -1) => {
+		this.state.showFormatBtns= true;
+		this.state.showErrorBtn= false;
 		console.log("Steeing request type: " + type);
 		if (type === "auto") {
 			if (this.state.oresponse === -1) {
@@ -99,6 +103,8 @@ class Response extends React.Component {
 					console.log("Rendering response as UNIDENTIFIED");
 					this.state.resType = "pretty";
 					this.state.oresType = "json";
+					this.state.showFormatBtns= false;
+					this.state.showErrorBtn= true;
 					this.state.response = JSON.stringify(response.errData);
 				}
 			}
@@ -149,14 +155,17 @@ class Response extends React.Component {
 		return (
 			<div className="response">
 				<div className="headerWrapper">
-					<div className="viewBtnWrapper">
+					{this.state.showFormatBtns? <div className="viewBtnWrapper" >
 						<button onClick={() => this.setRespnoseType("pretty")}>
 							Pretty
 						</button>
 						<button onClick={() => this.setRespnoseType("json")}>JSON</button>
 						<button onClick={() => this.setRespnoseType("html")}>HTML</button>
 						<button onClick={() => this.setRespnoseType("raw")}>Raw</button>
-					</div>
+					</div>: null}
+					{this.state.showErrorBtn? <div className="viewBtnWrapper" >
+						<button onClick={() => this.setRespnoseType("raw")}>Error</button>
+					</div>: null}
 					<div className="statusWrapper">
 						<div>{this.state.statusCode}</div>
 					</div>
