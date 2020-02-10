@@ -23,9 +23,17 @@
 	padding: 10px 15px;
 	border: 1px solid black;
 	border-right: 1px solid white;
-	background-color: #101820ff;
+	background-color: #3f3f3f;
 	color: white;
 	outline: none;
+}
+
+.response .headerWrapper .viewBtnWrapper button:hover {
+	background-color: black;
+}
+
+.response .headerWrapper .viewBtnWrapper .viewBtnActive {
+	background-color: black;
 }
 
 .response .headerWrapper .viewBtnWrapper button:hover {

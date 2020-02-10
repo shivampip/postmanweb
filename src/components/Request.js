@@ -6,20 +6,11 @@ class Request extends React.Component {
 		url: "https://reqres.in/api/users",
 		requestType: "post",
 		patamTab: "param",
-		params: [
-			{ key: "fname", value: "Shivam" },
-			{ key: "lname", value: "Agrawal" }
-		],
-		forms: [
-			{ key: "name", value: "Shivam" },
-			{ key: "job", value: "Agrawal" }
-		],
-		raws: [
-			{ key: "fname", value: "r1" },
-			{ key: "lname", value: "r2" }
-		],
+		params: [{ key: "", value: "" }],
+		forms: [{ key: "", value: "" }],
+		raws: [{ key: "", value: "" }],
 		rawData: "",
-		headers: [{ key: "Authorization", value: "KEY 3434634523" }]
+		headers: [{ key: "", value: "" }]
 	};
 
 	makeRequest = () => {
@@ -353,7 +344,9 @@ class Request extends React.Component {
 				<div className="payloadWrapper">
 					<div className="tabWrapper">
 						<button
-							className="topBtn"
+							className={`topBtn ${
+								this.state.patamTab === "param" ? "tabBtnActive" : null
+							}`}
 							onClick={() => {
 								this.setState({ patamTab: "param" });
 							}}
@@ -361,6 +354,7 @@ class Request extends React.Component {
 							GET Params
 						</button>
 						<button
+							className={this.state.patamTab === "form" ? "tabBtnActive" : null}
 							onClick={() => {
 								this.setState({ patamTab: "form" });
 							}}
@@ -368,6 +362,7 @@ class Request extends React.Component {
 							POST Params
 						</button>
 						<button
+							className={this.state.patamTab === "raw" ? "tabBtnActive" : null}
 							onClick={() => {
 								this.setState({ patamTab: "raw" });
 							}}
@@ -375,7 +370,9 @@ class Request extends React.Component {
 							Raw Data
 						</button>
 						<button
-							className="bottomBtn"
+							className={`bottomBtn ${
+								this.state.patamTab === "header" ? "tabBtnActive" : null
+							}`}
 							onClick={() => {
 								this.setState({ patamTab: "header" });
 							}}

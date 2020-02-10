@@ -64,12 +64,20 @@
 	outline: none;
 	border: 1px solid black;
 	border-bottom: 1px solid white;
-	background-color: #101820ff;
+	background-color: #3f3f3f;
 	color: white;
+	/* border-right: 10px solid #101820ff; */
+}
+
+.tabWrapper .tabBtnActive {
+	background-color: black;
+	/* border-right: 10px solid white; */
+	/* border-left: 5px dotted white; */
 }
 
 .tabWrapper button:hover {
 	cursor: pointer;
+	background-color: black;
 }
 
 .tabWrapper .bottomBtn {
@@ -112,7 +120,7 @@
 
 .paramsWrapper .rawData textarea {
 	width: 100%;
-	height: 150px;
+	height: 120px;
 	box-sizing: border-box;
 }
 

@@ -21,9 +21,9 @@ class Response extends React.Component {
 	componentWillUpdate(prevProps) {
 		if (prevProps.response !== this.props.response) {
 			console.log("PPRROOPPP UpdateD");
-			this.state.resType="auto";
-			this.state.oresType="auto";
-			this.state.oresponse= this.props.response
+			this.state.resType = "auto";
+			this.state.oresType = "auto";
+			this.state.oresponse = this.props.response;
 			//this.render();
 		}
 	}
@@ -32,12 +32,12 @@ class Response extends React.Component {
 		console.log("Updating State");
 		if (this.props.response !== -1) {
 			let response = JSON.parse(this.props.response);
-			console.log("Here is the status: "+this.state.resType);
+			console.log("Here is the status: " + this.state.resType);
 			console.log(response.status);
 			this.state.statusCode = response.status;
 			this.state.oresponse = JSON.stringify(response);
-		}else{
-			this.state.statusCode= 0
+		} else {
+			this.state.statusCode = 0;
 		}
 	};
 
@@ -70,8 +70,8 @@ class Response extends React.Component {
 	};
 
 	setRespnoseType = (type = -1) => {
-		this.state.showFormatBtns= true;
-		this.state.showErrorBtn= false;
+		this.state.showFormatBtns = true;
+		this.state.showErrorBtn = false;
 		console.log("Steeing request type: " + type);
 		if (type === "auto") {
 			if (this.state.oresponse === -1) {
@@ -100,13 +100,13 @@ class Response extends React.Component {
 						this.state.response = response.data;
 						// return <ResponseRaw response={response.data} />;
 					}
-				}else{
+				} else {
 					// Error while sending respnose
 					console.log("Rendering response as UNIDENTIFIED");
 					this.state.resType = "pretty";
 					this.state.oresType = "json";
-					this.state.showFormatBtns= false;
-					this.state.showErrorBtn= true;
+					this.state.showFormatBtns = false;
+					this.state.showErrorBtn = true;
 					this.state.response = JSON.stringify(response.errData);
 				}
 			}
@@ -115,7 +115,7 @@ class Response extends React.Component {
 				this.state.resType = "no";
 			} else {
 				// this.state.resType = type;
-				this.setState({resType: type});
+				this.setState({ resType: type });
 				//this.render();
 			}
 		}
@@ -128,8 +128,8 @@ class Response extends React.Component {
 			console.log("RENDERING as " + this.state.resType);
 			return <ResponseRaw response={this.state.response} />;
 		} else if (this.state.resType === "pretty") {
-			if(this.state.oresType!=="json"){
-				this.state.resType= this.state.oresType;
+			if (this.state.oresType !== "json") {
+				this.state.resType = this.state.oresType;
 				return this.renderResponse();
 			}
 			console.log("RENDERING as " + this.state.resType);
@@ -145,29 +145,59 @@ class Response extends React.Component {
 		return <ResponseNo />;
 	};
 	render() {
-		console.log("Rendering response: "+this.state.resType);
+		console.log("Rendering response: " + this.state.resType);
 
 		this.updateState();
-		if(this.state.resType==="auto"){
+		if (this.state.resType === "auto") {
 			this.setRespnoseType("auto");
 		}
-		console.log("BEFORE RENDERNING")
+		console.log("BEFORE RENDERNING");
 		console.log(this.state.resType);
 		//console.log(this.state.response);
 		return (
 			<div className="response">
 				<div className="headerWrapper">
-					{this.state.showFormatBtns? <div className="viewBtnWrapper" >
-						<button onClick={() => this.setRespnoseType("pretty")}>
-							Pretty
-						</button>
-						<button onClick={() => this.setRespnoseType("json")}>JSON</button>
-						<button onClick={() => this.setRespnoseType("html")}>HTML</button>
-						<button onClick={() => this.setRespnoseType("raw")}>Raw</button>
-					</div>: null}
-					{this.state.showErrorBtn? <div className="viewBtnWrapper" >
-						<button onClick={() => this.setRespnoseType("raw")}>Error</button>
-					</div>: null}
+					{this.state.showFormatBtns ? (
+						<div className="viewBtnWrapper">
+							<button
+								className={
+									this.state.resType === "pretty" ? "viewBtnActive" : null
+								}
+								onClick={() => this.setRespnoseType("pretty")}
+							>
+								Pretty
+							</button>
+							<button
+								className={
+									this.state.resType === "json" ? "viewBtnActive" : null
+								}
+								onClick={() => this.setRespnoseType("json")}
+							>
+								JSON
+							</button>
+							<button
+								className={
+									this.state.resType === "html" ? "viewBtnActive" : null
+								}
+								onClick={() => this.setRespnoseType("html")}
+							>
+								HTML
+							</button>
+							<button
+								className={
+									this.state.resType === "raw" ? "viewBtnActive" : null
+								}
+								onClick={() => this.setRespnoseType("raw")}
+							>
+								Raw
+							</button>
+						</div>
+					) : null}
+					{this.state.showErrorBtn ? (
+						<div className="viewBtnWrapper">
+							<button onClick={() => this.setRespnoseType("raw")}>Error</button>
+						</div>
+					) : null}
 					<div className="statusWrapper">
 						<div>{this.state.statusCode}</div>
 					</div>
