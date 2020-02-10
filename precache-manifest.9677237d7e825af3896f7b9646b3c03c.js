@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5ab9bdab24d4e8c76fc53826c0c173cc",
+    "revision": "3d131dd7d286352188db374daca36a0f",
     "url": "/postmanweb/index.html"
   },
   {
-    "revision": "6e20743e2c334dd81f17",
-    "url": "/postmanweb/static/css/main.ba046c16.chunk.css"
+    "revision": "fce77ea198e00fad6e76",
+    "url": "/postmanweb/static/css/main.f9c8598c.chunk.css"
   },
   {
     "revision": "6f322dff2201dee4bb68",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/postmanweb/static/js/2.66f0794a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6e20743e2c334dd81f17",
-    "url": "/postmanweb/static/js/main.07c1a91e.chunk.js"
+    "revision": "fce77ea198e00fad6e76",
+    "url": "/postmanweb/static/js/main.8be64a48.chunk.js"
   },
   {
     "revision": "fd96ed87b85544e81dc3",

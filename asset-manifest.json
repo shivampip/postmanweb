@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/postmanweb/static/css/main.ba046c16.chunk.css",
-    "main.js": "/postmanweb/static/js/main.07c1a91e.chunk.js",
-    "main.js.map": "/postmanweb/static/js/main.07c1a91e.chunk.js.map",
+    "main.css": "/postmanweb/static/css/main.f9c8598c.chunk.css",
+    "main.js": "/postmanweb/static/js/main.8be64a48.chunk.js",
+    "main.js.map": "/postmanweb/static/js/main.8be64a48.chunk.js.map",
     "runtime-main.js": "/postmanweb/static/js/runtime-main.e74ba4da.js",
     "runtime-main.js.map": "/postmanweb/static/js/runtime-main.e74ba4da.js.map",
     "static/js/2.66f0794a.chunk.js": "/postmanweb/static/js/2.66f0794a.chunk.js",
     "static/js/2.66f0794a.chunk.js.map": "/postmanweb/static/js/2.66f0794a.chunk.js.map",
     "index.html": "/postmanweb/index.html",
-    "precache-manifest.d9675554d3af1567b7cd068f4837c692.js": "/postmanweb/precache-manifest.d9675554d3af1567b7cd068f4837c692.js",
+    "precache-manifest.9677237d7e825af3896f7b9646b3c03c.js": "/postmanweb/precache-manifest.9677237d7e825af3896f7b9646b3c03c.js",
     "service-worker.js": "/postmanweb/service-worker.js",
-    "static/css/main.ba046c16.chunk.css.map": "/postmanweb/static/css/main.ba046c16.chunk.css.map",
+    "static/css/main.f9c8598c.chunk.css.map": "/postmanweb/static/css/main.f9c8598c.chunk.css.map",
     "static/js/2.66f0794a.chunk.js.LICENSE.txt": "/postmanweb/static/js/2.66f0794a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e74ba4da.js",
     "static/js/2.66f0794a.chunk.js",
-    "static/css/main.ba046c16.chunk.css",
-    "static/js/main.07c1a91e.chunk.js"
+    "static/css/main.f9c8598c.chunk.css",
+    "static/js/main.8be64a48.chunk.js"
   ]
 }
