@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/postmanweb/static/css/main.d2d74fe7.chunk.css",
+    "main.js": "/postmanweb/static/js/main.008dcbca.chunk.js",
+    "main.js.map": "/postmanweb/static/js/main.008dcbca.chunk.js.map",
+    "runtime-main.js": "/postmanweb/static/js/runtime-main.e74ba4da.js",
+    "runtime-main.js.map": "/postmanweb/static/js/runtime-main.e74ba4da.js.map",
+    "static/js/2.66f0794a.chunk.js": "/postmanweb/static/js/2.66f0794a.chunk.js",
+    "static/js/2.66f0794a.chunk.js.map": "/postmanweb/static/js/2.66f0794a.chunk.js.map",
+    "index.html": "/postmanweb/index.html",
+    "precache-manifest.f73de5885b7348bba0b756c36e26998a.js": "/postmanweb/precache-manifest.f73de5885b7348bba0b756c36e26998a.js",
+    "service-worker.js": "/postmanweb/service-worker.js",
+    "static/css/main.d2d74fe7.chunk.css.map": "/postmanweb/static/css/main.d2d74fe7.chunk.css.map",
+    "static/js/2.66f0794a.chunk.js.LICENSE.txt": "/postmanweb/static/js/2.66f0794a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e74ba4da.js",
+    "static/js/2.66f0794a.chunk.js",
+    "static/css/main.d2d74fe7.chunk.css",
+    "static/js/main.008dcbca.chunk.js"
+  ]
+}
