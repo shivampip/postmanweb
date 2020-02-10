@@ -94,6 +94,12 @@ class Response extends React.Component {
 						this.state.response = response.data;
 						// return <ResponseRaw response={response.data} />;
 					}
+				}else{
+					// Error while sending respnose
+					console.log("Rendering response as UNIDENTIFIED");
+					this.state.resType = "pretty";
+					this.state.oresType = "json";
+					this.state.response = JSON.stringify(response.errData);
 				}
 			}
 		} else {

@@ -51,5 +51,7 @@
 	border: 1px solid black;
 	border-radius: 0 0 10px 10px;
 	min-height: 200px;
-	overflow: scroll;
+	/* overflow: scroll; */
+	/* white-space: pre-line; */
+	word-wrap: break-word; 
 }

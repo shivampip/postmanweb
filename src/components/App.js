@@ -15,8 +15,8 @@ class App extends React.Component {
 		const proxyurl = "https://cors-anywhere.herokuapp.com/";
 		axios({
 			method: requestType,
-			// url: url,
-			url: proxyurl + url,
+			url: url,
+			// url: proxyurl + url,
 			params: params,
 			// data: JSON.stringify({
 			// 	title: "Shivam",
@@ -36,8 +36,13 @@ class App extends React.Component {
 				console.log("ERROR");
 				console.log("RESPONSE");
 				console.log(err);
+				console.log("Error logged");
 				if (err.response) {
 					this.setState({ response: JSON.stringify(err.response) });
+				}else{
+					let errRes= JSON.stringify({"errData": err});
+					console.log(errRes);
+					this.setState({response: errRes});
 				}
 			})
 			.then(function() {
