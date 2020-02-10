@@ -23,6 +23,7 @@
 .headerWrapper input {
 	padding: 10px 20px;
 	border: 1px solid black;
+	min-width: 50px;
 }
 
 .headerWrapper> button {
@@ -88,13 +89,21 @@
 
 .paramRow {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 1fr 40px;
 	outline: none;
-	box-sizing: border-box;
+	/* box-sizing: border-box; */
 }
 
 .paramRow input {
 	padding: 10px;
 	outline: none;
 	border: 1px soid black;
+	min-width: 50px;
+}
+
+.paramRow .removeRowB{
+	background-color: rgb(255, 233, 233);
+	/* width: 40px; */
+	border: 1px solid black;
+	outline: none;
 }

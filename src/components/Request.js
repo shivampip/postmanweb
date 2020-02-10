@@ -31,19 +31,34 @@ class Request extends React.Component {
 		this.print("Request Type: " + requestType);
 
 		let params = {};
-		this.state.params.map(param => {
+		this.state.params.filter((param)=>{
+			if(param.key===""){
+				return false;
+			}
+			return true;
+		  }).map(param => {
 			params[param.key] = param.value;
 		});
 
 		let raws = this.state.raws;
 
 		let forms = {};
-		this.state.forms.map(form => {
+		this.state.forms.filter((form)=>{
+			if(form.key===""){
+				return false;
+			}
+			return true;
+		  }).map(form => {
 			forms[form.key] = form.value;
 		});
 
 		let headers = {};
-		this.state.headers.map(header => {
+		this.state.headers.filter((header)=>{
+			if(header.key===""){
+				return false;
+			}
+			return true;
+		  }).map(header => {
 			headers[header.key] = header.value;
 		});
 		this.print("PARAMS");
@@ -116,6 +131,27 @@ class Request extends React.Component {
 		}
 	};
 
+	removeRow = (ptype, index) => {
+		console.log("Removing Row: "+ptype+" , "+index);
+		if (ptype === "param") {
+			let params = this.state.params;
+			params.splice(index, 1);
+			this.setState({params: params});
+		} else if (ptype === "form") {
+			let params = this.state.forms;
+			params.splice(index, 1);
+			this.setState({forms: params});
+		} else if (ptype === "raw") {
+			let params = this.state.raws;
+			params.splice(index, 1);
+			this.setState({raws: params});
+		} else if (ptype === "header") {
+			let params = this.state.headers;
+			params.splice(index, 1);
+			this.setState({headers: params});
+		}
+	};
+
 	getParams = () => {
 		return this.state.params.map((data, index) => {
 			let lbtn= "";
@@ -137,13 +173,19 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
-						className={rbtn}
+						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
 							this.handleChange("param", index, false, eve.target.value);
 						}}
 					/>
+					<button 
+						className= {`removeRowB ${rbtn}`}
+						onClick={eve => {
+							this.removeRow("param", index);
+						}}
+					>X</button>
 				</div>
 			);
 		});
@@ -168,13 +210,19 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
-						className={rbtn}
+						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
 							this.handleChange("form", index, false, eve.target.value);
 						}}
 					/>
+					<button 
+						className= {`removeRowB ${rbtn}`}
+						onClick={eve => {
+							this.removeRow("form", index);
+						}}
+					>X</button>
 				</div>
 			);
 		});
@@ -199,13 +247,19 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
-						className={rbtn}
+						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
 							this.handleChange("raw", index, false, eve.target.value);
 						}}
 					/>
+					<button 
+						className= {`removeRowB ${rbtn}`}
+						onClick={eve => {
+							this.removeRow("raw", index);
+						}}
+					>X</button>
 				</div>
 			);
 		});
@@ -230,13 +284,19 @@ class Request extends React.Component {
 						}}
 					/>
 					<input
-						className={rbtn}
+						// className={rbtn}
 						type="text"
 						defaultValue={data.value}
 						onBlur={eve => {
 							this.handleChange("header", index, false, eve.target.value);
 						}}
 					/>
+					<button 
+						className= {`removeRowB ${rbtn}`}
+						onClick={eve => {
+							this.removeRow("header", index);
+						}}
+					>X</button>
 				</div>
 			);
 		});
@@ -273,6 +333,8 @@ class Request extends React.Component {
 			this.setState({ headers: params });
 		}
 	};
+
+
 
 	render() {
 		return (
