@@ -10,9 +10,7 @@ class Request extends React.Component {
 		forms: [{ key: "", value: "" }],
 		raws: [{ key: "", value: "" }],
 		rawData: "",
-		headers: [
-			{key:"Accept", value: "application/json"},
-			{ key: "X-COUPA-API-KEY", value: "8280da6bea0add7967c0519502ba0b006b7cdd1c" }]
+		headers: [{ key: "", value: "" }]
 	};
 
 	makeRequest = () => {

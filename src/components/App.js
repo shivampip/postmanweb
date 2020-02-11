@@ -1,8 +1,10 @@
 import "./App.css";
 import React from "react";
+import axios from "axios";
 import Request from "./Request";
 import Response from "./Response";
-import axios from "axios";
+import GithubCatRibbon from "./GithubCatRibbon";
+import AboutCard from "./AboutCard";
 
 class App extends React.Component {
 	state = {
@@ -13,15 +15,15 @@ class App extends React.Component {
 	makeRequest = (url, requestType, params, raws, forms, headers) => {
 		// console.clear();
 		console.log("SENDING REQUEST");
-		this.setState({proWClass: "requestOverlayActive"});
+		this.setState({ proWClass: "requestOverlayActive" });
 		let proxyurl = "https://cors-anywhere.herokuapp.com/";
 		// proxyurl= "https://crossorigin.me/";
 		axios({
-			method: requestType, 
+			method: requestType,
 			// url: url,
 			url: proxyurl + url,
 			params: params,
-			data: (raws!=="")? raws: forms,
+			data: raws !== "" ? raws : forms,
 			headers: headers
 		})
 			.then(response => {
@@ -34,15 +36,15 @@ class App extends React.Component {
 				console.log(err);
 				if (err.response) {
 					this.setState({ response: JSON.stringify(err.response) });
-				}else{
-					let errRes= JSON.stringify({"errData": err});
+				} else {
+					let errRes = JSON.stringify({ errData: err });
 					console.log(errRes);
-					this.setState({response: errRes});
+					this.setState({ response: errRes });
 				}
 			})
-			.then(()=> {
+			.then(() => {
 				console.log("REQUEST COMPLETED");
-				this.setState({proWClass: "requestOverlay"});
+				this.setState({ proWClass: "requestOverlay" });
 			});
 	};
 
@@ -56,6 +58,8 @@ class App extends React.Component {
 					<Request onSend={this.makeRequest} />
 				</div>
 				<Response response={this.state.response} />
+				<GithubCatRibbon />
+				<AboutCard />
 			</div>
 		);
 	}
