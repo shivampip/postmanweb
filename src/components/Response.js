@@ -86,6 +86,12 @@ class Response extends React.Component {
 					this.state.oresType = "json";
 					this.state.response = JSON.stringify(response.data);
 					// return <ResponsePretty response={JSON.stringify(response.data)} />;
+				}else if (this.whatIsIt(response.data) === "Array") {
+					console.log("Rendering response as Object");
+					this.state.resType = "pretty";
+					this.state.oresType = "json";
+					this.state.response = JSON.stringify({array : response.data});
+					// return <ResponsePretty response={JSON.stringify(response.data)} />;
 				} else if (this.whatIsIt(response.data) === "String") {
 					if (this.isHTML(response.data)) {
 						console.log("Rendering response as HTML");

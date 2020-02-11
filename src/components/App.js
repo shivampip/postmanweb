@@ -14,11 +14,12 @@ class App extends React.Component {
 		// console.clear();
 		console.log("SENDING REQUEST");
 		this.setState({proWClass: "requestOverlayActive"});
-		const proxyurl = "https://cors-anywhere.herokuapp.com/";
+		let proxyurl = "https://cors-anywhere.herokuapp.com/";
+		// proxyurl= "https://crossorigin.me/";
 		axios({
 			method: requestType, 
-			url: url,
-			// url: proxyurl + url,
+			// url: url,
+			url: proxyurl + url,
 			params: params,
 			data: (raws!=="")? raws: forms,
 			headers: headers
