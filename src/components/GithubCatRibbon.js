@@ -4,7 +4,7 @@ import "./GithubCatRibbon.css";
 const Card = props => {
 	return (
 		<a
-			href="https://github.com/shivampip"
+			href="https://github.com/shivampip/postmanweb"
 			target="_blank"
 			class="github-corner"
 		>
